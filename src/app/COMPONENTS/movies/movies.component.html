@@ -1,0 +1,17 @@
+<div class="col">
+    <navbar></navbar>
+    <section class="col-12 main">
+        <h2 class="text-white d-flex align-items-center gap-2"> <mat-icon>theaters</mat-icon> Movies</h2>
+        <div class="d-flex flex-wrap gap-5 container-movies" >
+            <mat-card class="example-card" appearance="outlined" *ngFor="let film of films" (click)="seeMovie(film.id)">
+                <img mat-card-image src="../../../assets/icons/video.png" alt="Photo of a Shiba Inu" class="poster">
+                <mat-card-content>
+                  <p>
+                    {{film.title}}
+                  </p>
+                </mat-card-content>
+            </mat-card>           
+        </div>
+    </section>
+
+</div>

@@ -1,0 +1,35 @@
+@import '../../../custom-theme.scss';
+
+
+.container-movies{
+    height: 90%;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.container-movies::-webkit-scrollbar{
+    width: 10px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.container-movies::-webkit-scrollbar-thumb{
+    background-color: $primary-color-700;
+    width: 8px;
+    border-radius: 8px;
+}
+  
+.example-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    max-width: 15%;
+    height: 20em;
+    cursor: pointer;
+  }
+  
+.poster {
+    width: 30%;
+}
+  

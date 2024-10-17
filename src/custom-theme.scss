@@ -1,0 +1,50 @@
+@import "@angular/material/theming";
+
+// Incluye todas las funciones de theming de Angular Material
+@include mat-core();
+
+// Define la paleta cyan para el tema primario y naranja para el tema de acento
+$cyan-primary: mat-palette($mat-cyan);
+$orange-accent: mat-palette($mat-orange, A200, A100, A400);
+
+// Define un tema personalizado usando estas paletas
+$custom-theme: mat-light-theme(
+  (
+    color: (
+      primary: $cyan-primary,
+      accent: $orange-accent,
+    )
+  )
+);
+
+$primary-color: mat-color($cyan-primary, 500); // Cyan 500
+$primary-color-100: mat-color($cyan-primary, 500); // Cyan 500
+$primary-color-200: mat-color($cyan-primary, 200); // Cyan 500
+$primary-color-300: mat-color($cyan-primary, 300); // Cyan 500
+$primary-color-400: mat-color($cyan-primary, 400); // Cyan 500
+$primary-color-600: mat-color($cyan-primary, 600); // Cyan 500
+$primary-color-700: mat-color($cyan-primary, 700); // Cyan 500
+$primary-color-800: mat-color($cyan-primary, 800); // Cyan 500
+$primary-color-900: mat-color($cyan-primary, 900); // Cyan 500
+$primary-color-A100: mat-color($cyan-primary, A100); // Cyan 500
+$primary-color-A200: mat-color($cyan-primary, A200); // Cyan 500
+$primary-color-A400: mat-color($cyan-primary, A400); // Cyan 500
+$primary-color-A700: mat-color($cyan-primary, A700); // Cyan 500
+
+
+$accent-color: mat-color($orange-accent);
+$accent-color-100: mat-color($orange-accent, 100);
+$accent-color-200: mat-color($orange-accent, 200);
+$accent-color-300: mat-color($orange-accent, 300);
+$accent-color-400: mat-color($orange-accent, 400);
+$accent-color-500: mat-color($orange-accent, 500);
+$accent-color-600: mat-color($orange-accent, 600);
+$accent-color-700: mat-color($orange-accent, 700);
+$accent-color-800: mat-color($orange-accent, 800);
+$accent-color-900: mat-color($orange-accent, 900);
+$accent-color-A100: mat-color($orange-accent, A100);
+$accent-color-A200: mat-color($orange-accent, A200);
+
+
+// Aplica el tema personalizado a todo tu proyecto
+@include angular-material-theme($custom-theme);

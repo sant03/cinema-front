@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'custom-theme.scss';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.main{
+    background-color: black !important;
+    width: 100vw;
+    height: 100vh;
+    padding: 5% 2em 2em 2em;
+    overflow: hidden;
+    overflow-y: scroll ;
+    scroll-behavior: smooth;
+}
+
+.main::-webkit-scrollbar{
+    display: none;
+}
+  
