@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { MovieService } from 'src/app/SERVICES/movie.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Movie, ShowTime } from 'src/app/MODELS/cinema.model';
+import { MovieService } from 'src/app/SERVICES/cinema.service';
+import { Utils } from 'src/app/UTILS/utils';
 
 @Component({
   selector: 'app-movie',
@@ -10,10 +12,11 @@ import { MovieService } from 'src/app/SERVICES/movie.service';
 export class MovieComponent {
 
   id: number = 0
-  movie: any;
-  showTimes: any;
+  movie: Movie = new Movie();
+  showTimes: Array<ShowTime> = new Array<ShowTime>();
+  utils = new Utils()
 
-  constructor(private service: MovieService, private route: ActivatedRoute){
+  constructor(private service: MovieService, private route: ActivatedRoute, private router: Router){
     this.route.queryParams.subscribe(param => {
       if(param){
         this.id = param['id'];
@@ -27,6 +30,10 @@ export class MovieComponent {
     this.service.getMovie(this.id, this)
   }
 
+  processFuntion(id: number){
+    this.router.navigate(['/showRoom'], {queryParams:{id:id}})
+  }
+
   getShowTimes(){
     this.service.getShowTime(this.id, this)
   }
@@ -37,17 +44,6 @@ export class MovieComponent {
 
   successHandlerGetShowTime(data:any){
     this.showTimes = data
-  }
-
-  parseDate(date: string){
-    if(date != null){
-      const normalizedDateStr = date.replace('a. m.', 'AM').replace('p. m.', 'PM');
-      const parsedDate = new Date(normalizedDateStr);
-      console.log(parsedDate);
-      return parsedDate;
-    }
-    return new Date()
-
   }
 
   errorHandlerGet(){}

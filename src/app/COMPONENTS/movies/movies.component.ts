@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { MovieService } from 'src/app/SERVICES/movie.service';
+import { Movie } from 'src/app/MODELS/cinema.model';
+import { MovieService } from 'src/app/SERVICES/cinema.service';
 
 @Component({
   selector: 'app-movies',
@@ -9,7 +10,7 @@ import { MovieService } from 'src/app/SERVICES/movie.service';
 })
 export class MoviesComponent {
 
-  films: any = [];
+  films: Array<Movie> = [];
 
   constructor(private service: MovieService, private router: Router){
     this.service.getMovies(this);

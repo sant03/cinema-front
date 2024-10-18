@@ -1,0 +1,24 @@
+    <div class="reservation p-3 d-flex gap-5">
+        <div class="reservation-left">
+            <h1 class="f-bold">Make your reservation</h1>
+            <div class="seat" [ngClass]="{'bg-warning': reservation.seat.isReserved && !reservation.seat.isReported, 'bg-transparent': !reservation.seat.isReserved, 'bg-secondary': reservation.seat.isReserved && reservation.seat.isReported}"
+            >
+                {{reservation.seat.name}}
+            </div>
+            <hr>
+            <span class="badge text-bg-warning">{{utils.parseDate(reservation.showTime.date) | date : 'dd/MM/yyyy'}}</span>
+            <span class="badge text-bg-dark text-white">{{utils.parseDate(reservation.showTime.date) | date : 'hh:mm a'}}</span>
+        </div>
+        <div class="d-flex flex-column justify-content-between reservation-right">
+            <p>Movie Title: <span class="badge text-bg-warning">{{reservation.showTime.movie.title}}</span></p>
+            <p>Show Room: <span class="badge text-bg-warning">{{reservation.showRoom.name}}</span></p>
+
+            <p>Hora: <span class="badge text-bg-warning">{{utils.parseDate(reservation.showTime.date) | date : 'hh:mm a'}}</span></p>
+    
+            <div class="d-flex justify-content-between gap-3">
+                <button class="btn btn-outline-secondary rounded-pill">Reportar</button>
+                <button class="btn btn-danger rounded-pill">Cancelar</button>
+                <button class="btn btn-outline-warning rounded-pill" [mat-dialog-close]="true" (click)="doReservation()">Guardar</button>
+            </div>
+        </div>
+    </div>

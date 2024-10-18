@@ -7,9 +7,9 @@
             </div>
             <mat-card-content class="movie-detils">
               <h3>
-                {{movie?.title}}
+                {{movie.title}}
               </h3>
-              <p>{{movie?.description}}</p>
+              <p>{{movie.description}}</p>
               <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis distinctio porro, dicta, veniam iure eligendi quidem enim quasi similique aut tenetur reiciendis deleniti harum ad officia dolorem delectus non doloremque dolores itaque, veritatis eos quam. 
                 Porro, facere voluptatum nisi error quis officiis unde. Perferendis voluptates rerum maxime doloribus? Ea, explicabo?</p>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis distinctio porro, dicta, veniam iure eligendi quidem enim quasi similique aut tenetur reiciendis deleniti harum ad officia dolorem delectus non doloremque dolores itaque, veritatis eos quam. 
@@ -18,17 +18,17 @@
                         Porro, facere voluptatum nisi error quis officiis unde. Perferendis voluptates rerum maxime doloribus? Ea, explicabo?</p>
                 
                 <div class="movie-extra">
-                    <button class="btn btn-outline-warning p-2 px-5">{{movie?.category?.name}}</button>
+                    <button class="btn btn-outline-warning p-2 px-5">{{movie.category.name}}</button>
                 </div>
             </mat-card-content>
         </mat-card> 
 
         <h3 class="d-flex align-items-center gap-5"><mat-icon class="text-white">hourglass_top</mat-icon> SHOW TIMES</h3>
         <div class="showTimes-container d-flex flex-wrap gap-5">
-            <mat-card class="showTime" *ngFor="let showTime of showTimes">
-                <mat-card-header>{{parseDate(showTime.date) | date : 'dd/MM/yyyy'}}</mat-card-header>
+            <mat-card class="showTime" *ngFor="let showTime of showTimes" (click)="processFuntion(showTime.id)">
+                <mat-card-header>{{utils.parseDate(showTime.date) | date : 'dd/MM/yyyy'}}</mat-card-header>
                 <mat-card-content>
-                    <p>{{parseDate(showTime.date) | date : 'hh:mm a'}}</p>
+                    <p>{{utils.parseDate(showTime.date) | date : 'hh:mm a'}}</p>
                 </mat-card-content>
             </mat-card>
         </div>

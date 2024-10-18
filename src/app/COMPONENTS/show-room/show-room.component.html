@@ -1,0 +1,56 @@
+<div class="col">
+    <navbar></navbar>
+    <section class="col-12 main">
+        <mat-card class="example-card" appearance="outlined">
+            <div class="d-flex flex-column gap-3 justify-content-center">
+                <h1 class="text-white">{{funtionRoom.showRoom.name}}</h1>
+                <p class="text-warning">Aforo: {{funtionRoom.showRoom.seats}}</p>
+                <hr class="text-white">
+                <p class="text-warning">Movie: {{funtionRoom.showTime.movie.title}}</p>
+                <p class="text-warning">Date: {{utlis.parseDate(funtionRoom.showTime.date) | date: 'dd/MM/yyyy hh:mm:ss a'}}</p>
+
+            </div>
+            <div class="poster-container">
+            </div>
+            <div class="seats-container">
+                <div class="row d-flex flex-column gap-3" *ngFor="let row of processSeats(funtionRoom.seats, funtionRoom.showRoom.seats)">
+                    <strong class="text-white text-center">{{row.name}}</strong>
+                    <button class="seat btn" 
+                    *ngFor="let seat of row.rowSeats" 
+                    [ngClass]="{'btn-warning': seat.isReserved && !seat.isReported, 'btn-outline-warning': !seat.isReserved, 'btn-secondary': seat.isReserved && seat.isReported}"
+                    (click)="reserveSeat(seat)"
+                    >
+                        {{seat.name}}
+                    </button>
+                </div>
+            </div>
+            <div class="seats-info d-flex flex-column gap-3 justify-content-center">
+                <span class="badge text-bg-warning">Reserved</span>
+                <span class="btn btn-outline-warning badge text-bg-trasnparent">Available</span>
+                <span class="badge text-bg-secondary">Reported</span>
+                <span class="badge text-bg-danger">Not Available</span>
+            </div>
+        </mat-card>
+
+        <h3 class="d-flex align-items-center gap-5"><mat-icon class="text-white">confirmation_number</mat-icon>YOUR RESERVATIONS</h3>
+        <div class="reservations-container d-flex flex-wrap gap-5">
+            <div class="reservation p-3 rounded bg-white" *ngFor="let reservation of proceessReservations(reservations)">
+                <div class="reservation-left d-flex flex-column gap-2">
+                    <button class="btn btn-warning">
+                        {{utlis.parseDate(reservation.showTime.date) | date : 'dd/MM/yyyy'}}
+                    </button>
+                    <button class="btn btn-warning">
+                        {{utlis.parseDate(reservation.showTime.date) | date : 'hh:mm a'}}
+                    </button>
+                    <span class="badge text-bg-info" style="cursor: pointer;" (click)="seeReservation(reservation)">Ver reservacion</span>
+                </div>
+                <div>
+                    <strong>{{reservation.user.username}}</strong>
+                    <p> <strong>SEAT:</strong>  <span class="badge text-bg-warning">{{reservation.seat.name}}</span></p>
+                    <p> <strong>ROOM:</strong> <span class="badge text-bg-warning">{{reservation.showTime.showRoom.name}}</span></p>
+                    <p> <strong>SHOW TIME:</strong> {{reservation.showTime.movie.title}}  <span class="badge text-bg-warning">{{reservation.showTime.movie.category.name}}</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
