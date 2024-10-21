@@ -6,6 +6,7 @@ import { MovieService } from 'src/app/SERVICES/cinema.service';
 import { Utils } from 'src/app/UTILS/utils';
 import { ReservationComponent } from './reservation/reservation.component';
 import { MessagesComponent } from '../messages/messages.component';
+import { ReportComponent } from './reservation/report/report.component';
 
 @Component({
   selector: 'app-show-room',
@@ -15,7 +16,7 @@ import { MessagesComponent } from '../messages/messages.component';
 export class ShowRoomComponent {
 
   id: number = 0;
-  funtionRoom: FunctionRoom = new FunctionRoom();
+  funtionRoom: any = new FunctionRoom();
   reservations: Array<any> = new Array<any>();
   utlis = new Utils()
 
@@ -75,7 +76,10 @@ export class ShowRoomComponent {
       {name : 'H', greatherThan: 43, lessThan: 51},
       {name : 'I', greatherThan: 50, lessThan: 58},
       {name : 'J', greatherThan: 57, lessThan: 67},
-      {name : 'K', greatherThan: 66, lessThan: 78}
+      {name : 'K', greatherThan: 66, lessThan: 77},
+      {name : 'L', greatherThan: 76, lessThan: 87},
+      {name : 'M', greatherThan: 86, lessThan: 98}
+
     ]
     for(let i=1; i <= aforo; i++){
       let reservedSeat =  seats.find((seat: Seat) => seat.id == i)
@@ -123,6 +127,24 @@ export class ShowRoomComponent {
     })
   }
 
+  successHandlerDelete(data: any){
+    console.log(data)
+    let dataDialog = {
+      title : 'Reservation canceled',
+      content: 'Your reservation has been canceled successfully'
+    }
+    const dialogRef = this.dialog.open(MessagesComponent, {
+      width: '30%',
+      height: '30%',
+      data: dataDialog
+    }); 
+
+    dialogRef.afterClosed().subscribe(data =>{
+      this.processFuntionRoom()
+      this.getUserReservations()    
+    }) 
+  }
+
   errorHandlerPost(error: any){
     console.log(error);
     let dataDialog = {
@@ -145,6 +167,7 @@ export class ShowRoomComponent {
     let reservationsProcessed = reservations.filter((reservation: any) => {
       return reservation.showTime.id == this.id
     })
+    console.log(reservationsProcessed)
     return reservationsProcessed
   }
 
@@ -154,7 +177,8 @@ export class ShowRoomComponent {
       seat: seat,
       showRoom: this.funtionRoom.showRoom,
       showTime: this.funtionRoom.showTime,
-      _this: this
+      _this: this,
+      reserved: false,
     }
 
     const dialogRef = this.dialog.open(ReservationComponent, {
@@ -168,16 +192,33 @@ export class ShowRoomComponent {
     reservation.seat.isReserved = true
     reservation.seat.isReported = reservation.reported
     let reservationInfo = {
+      id: reservation.id,
       userId: 1,
       seat: reservation.seat,
       showRoom: reservation.showTime.showRoom,
       showTime: reservation.showTime,
-      _this: this
+      _this: this,
+      reserved: true
     }
     const dialogRef = this.dialog.open(ReservationComponent, {
       width: '40%',
       height: '40%',
       data: reservationInfo,
+    });
+  }
+
+  seeReports(id: number){
+    this.dialog.closeAll()
+
+    let dataDialog = {
+      reservationId: id,
+      _this: this,
+      doReport: false
+    }
+    const dialogRef = this.dialog.open(ReportComponent, {
+      width: '30%',
+      height: '50%',
+      data: dataDialog
     });
   }
 

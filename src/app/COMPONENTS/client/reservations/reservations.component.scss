@@ -1,0 +1,42 @@
+@import '../../../../custom-theme.scss';
+.reservation{
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+    position: relative;
+}
+
+.reservation-left{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: dotted;
+}
+
+.reservation::before{
+    content: '';
+    background-color: black;
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    position: absolute;
+    bottom: -10%;
+    left: 28%;
+}
+
+.reservation::after{
+    content: '';
+    background-color: black;
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    position: absolute;
+    top: -10%;
+    left: 28%;
+}
+
+.mat-mdc-dialog-container .mdc-dialog__surface{
+    overflow: hidden !important;
+}

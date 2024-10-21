@@ -1,0 +1,13 @@
+@import '../../../../../custom-theme.scss';
+
+.reports-container::-webkit-scrollbar{
+    width: 5px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.reports-container::-webkit-scrollbar-thumb{
+    background-color: $primary-color-700;
+    width: 4px;
+    border-radius: 8px;
+}

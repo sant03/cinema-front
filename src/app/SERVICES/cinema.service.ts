@@ -12,7 +12,7 @@ export class MovieService {
     // ---------- GET --------------------
 
     getMovies(_this: any){
-        this.api.get(this.BASE_URL + '/movies', '', _this)
+        this.api.getMovies(this.BASE_URL + '/movies', '', _this)
     }
     getMovie(id: number, _this: any){
         this.api.getMovie(this.BASE_URL + '/movies/', id, _this)
@@ -31,11 +31,11 @@ export class MovieService {
     }
 
     getMoviesByCategory(id: number, _this: any){
-        this.api.get(this.BASE_URL + '/movies/categories/', id, _this)
+        this.api.getMovies(this.BASE_URL + '/movies/categories/', id, _this)
     }
 
     getMovieByTitle(title: string, _this: any){
-        this.api.get(this.BASE_URL + '/movies/title?title=', title, _this)
+        this.api.getMovies(this.BASE_URL + '/movies/title?title=', title, _this)
     }
 
     getCategories(_this: any){
@@ -59,8 +59,15 @@ export class MovieService {
     doReservation(reservation: Reservation, _this: any){
         this.api.post(this.BASE_URL + '/client/doReservation', '', reservation, _this)
     }
+
+    reportReservation(id: number, body: String, _this: any){
+        this.api.post(this.BASE_URL + '/client/reportReservation/', id, body,  _this)
+
+    }
     // ---------- PUT --------------------
 
     // ---------- DELETE -----------------
-
+    cancelReservation(id: number, _this: any){
+        this.api.delete(this.BASE_URL + '/client/cancelReservation/', id, _this)
+    }
 }

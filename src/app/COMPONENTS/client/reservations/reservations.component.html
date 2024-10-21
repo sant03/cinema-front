@@ -1,0 +1,27 @@
+<div class="col">
+    <navbar></navbar>
+    <section class="col-12 main">
+        <!--Reservations Section-->
+        <h3 class="d-flex align-items-center gap-5"><mat-icon class="text-white">confirmation_number</mat-icon>YOUR RESERVATIONS</h3>
+        <div class="reservations-container d-flex flex-wrap gap-5">
+            <div class="reservation p-3 rounded bg-white" *ngFor="let reservation of reservations">
+                <div class="reservation-left d-flex flex-column gap-2">
+                    <button class="btn btn-warning">
+                        {{utlis.parseDate(reservation.showTime.date) | date : 'dd/MM/yyyy'}}
+                    </button>
+                    <button class="btn btn-warning">
+                        {{utlis.parseDate(reservation.showTime.date) | date : 'hh:mm a'}}
+                    </button>
+                    <span class="badge text-bg-info" style="cursor: pointer;" (click)="seeReservation(reservation)">Ver reservacion</span>
+                </div>
+                <div>
+                    <strong>{{reservation.user.username}}</strong>
+                    <p> <strong>SEAT:</strong>  <span class="badge text-bg-warning">{{reservation.seat.name}}</span></p>
+                    <p> <strong>ROOM:</strong> <span class="badge text-bg-warning">{{reservation.showTime.showRoom.name}}</span></p>
+                    <p> <strong>SHOW TIME:</strong> {{reservation.showTime.movie.title}}  <span class="badge text-bg-warning">{{reservation.showTime.movie.category.name}}</span></p>
+                </div>
+                <mat-icon class="warning" *ngIf="reservation.reported" (click)="seeReports(reservation.id)">warning</mat-icon>
+            </div>
+        </div>
+    </section>
+</div>

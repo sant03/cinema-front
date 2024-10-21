@@ -20,6 +20,12 @@ import {MatInputModule} from '@angular/material/input';
 import { ReservationComponent } from './COMPONENTS/show-room/reservation/reservation.component';
 import {MatButtonModule} from '@angular/material/button';
 import { MessagesComponent } from './COMPONENTS/messages/messages.component';
+import { ReportComponent } from './COMPONENTS/show-room/reservation/report/report.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import { ClientComponent } from './COMPONENTS/client/client.component';
+import { ReservationsComponent } from './COMPONENTS/client/reservations/reservations.component';
+import {MatChipsModule} from '@angular/material/chips';
+import { CinemaComponent } from './COMPONENTS/cinema/cinema.component';
 
 
 
@@ -32,7 +38,11 @@ import { MessagesComponent } from './COMPONENTS/messages/messages.component';
     MovieComponent,
     ShowRoomComponent,
     ReservationComponent,
-    MessagesComponent
+    MessagesComponent,
+    ReportComponent,
+    ClientComponent,
+    ReservationsComponent,
+    CinemaComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +56,9 @@ import { MessagesComponent } from './COMPONENTS/messages/messages.component';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatStepperModule,
+    MatChipsModule
     
   ],
   providers: [ApiClient, MovieService],

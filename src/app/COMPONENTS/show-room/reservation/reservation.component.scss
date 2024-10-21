@@ -54,6 +54,9 @@
 }
 
 .reservation-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 60%;
 }
 

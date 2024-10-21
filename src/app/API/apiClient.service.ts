@@ -13,7 +13,9 @@ export class ApiClient {
                     _this.successHandlerGet(data)
                 }
             },
-            error: (e) => {},
+            error: (e) => {
+                _this.errorHandlerGet(e)
+            },
             complete: () => {}
         })
     }
@@ -39,8 +41,14 @@ export class ApiClient {
     }
     delete = (url: string, params: any, _this: any) => {
         this.http.delete(url + params).subscribe({
-            next : () => {},
-            error: (e) => {},
+            next : (data: any) => {
+                if(data){
+                    _this.successHandlerDelete(data)
+                }
+            },
+            error: (e) => {
+                _this.errorHandlerDelete(e)
+            },
             complete: () => {}
         })
     }
@@ -50,6 +58,18 @@ export class ApiClient {
             next: (data: any) => {
                 if(data){
                     _this.successHandlerGetMovie(data)
+                }
+            },
+            error: (e) => {},
+            complete: () => {}
+        })
+    }
+
+    getMovies = (url: string, params: any,  _this: any) => {
+        this.http.get(url + params).subscribe({
+            next: (data: any) => {
+                if(data){
+                    _this.successHandlerGetMovies(data)
                 }
             },
             error: (e) => {},

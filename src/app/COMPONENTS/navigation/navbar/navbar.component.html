@@ -12,23 +12,37 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
+              <a class="nav-link active text-white" aria-current="page" href="#">Peliculas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#">Profile</a>
+              <a class="nav-link text-white" href="#">Perfil</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
+                Mas opciones
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" [routerLink]="'/reservations'">Mis Reservaciones</a></li>
+                <li><a class="dropdown-item " href="#">Nuestras promociones</a></li>
+                
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item " href="#">Something else here</a></li>
+                <li><a class="dropdown-item" href="#">Contactanos</a></li>
               </ul>
+            </li>
+            <hr class="divider">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Administracion
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" [routerLink]="'/reservations'">Reservaciones</a></li>
+                <li><a class="dropdown-item " [routerLink]="'/cinema'">Gestion ShowTimes</a></li>
+              </ul>
+            </li>
+            <li class="nav-item my-3" style="position: absolute; bottom: 0;">
+              <button class="btn btn-outline-warning text-white px-3 d-flex justify-content-center align-items-center"><mat-icon>power_settings_new</mat-icon> Log Out</button>
             </li>
           </ul>
         </div>

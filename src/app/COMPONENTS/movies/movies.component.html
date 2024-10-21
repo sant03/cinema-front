@@ -1,7 +1,16 @@
 <div class="col">
     <navbar></navbar>
     <section class="col-12 main">
+      <form class="d-flex gap-2 my-2" role="search">
+        <input class="form-control bg-transparent text-white border border-primary" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="search" (input)="subject.next(search)" name="search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
         <h2 class="text-white d-flex align-items-center gap-2"> <mat-icon>theaters</mat-icon> Movies</h2>
+        <mat-chip-set aria-label="Category selection" class="my-3">
+          <mat-chip *ngFor="let category of categories" class="border rounded" (click)="selectCategory(category)" [ngClass]="{'bg-warning' : category == categorySelected, 'border-warning': category == categorySelected, 'bg-transparent' : category != categorySelected, 'border-white': category !=  categorySelected}"><span class="text-white" >{{category.name}}</span></mat-chip>
+          <mat-chip  class="border rounded" (click)="selectCategory()" [ngClass]="{'bg-warning': categorySelected == undefined, 'border-warning': categorySelected == undefined, 'bg-transparent': categorySelected != undefined, 'border-white': categorySelected != undefined}"><span class="text-white" >Todas</span></mat-chip>
+
+        </mat-chip-set>
         <div class="d-flex flex-wrap gap-5 container-movies" >
             <mat-card class="example-card" appearance="outlined" *ngFor="let film of films" (click)="seeMovie(film.id)">
                 <img mat-card-image src="../../../assets/icons/video.png" alt="Photo of a Shiba Inu" class="poster">
@@ -11,7 +20,7 @@
                   </p>
                 </mat-card-content>
             </mat-card>           
-        </div>
+          </div>
     </section>
 
 </div>

@@ -1,0 +1,31 @@
+<div class="container p-3" *ngIf="doReport">
+    <h2 mat-dialog-title>Report Reservation</h2>
+    <mat-dialog-content>
+        <i>If your are unconfortable with your reservation o want to make some appointment, write down your claims</i>
+        <mat-form-field appearance="outline" class="col-12 my-2">
+            <mat-label>Report</mat-label>
+            <textarea matInput placeholder="Write the reason for your report" [(ngModel)]="reasons"></textarea>
+        </mat-form-field>
+        <mat-dialog-actions>
+          <button mat-button mat-dialog-close color="accent" >Cancel</button>
+          <button mat-button [mat-dialog-close]="true" color="primary"(click)="reportReservation()" >Do report</button>
+        </mat-dialog-actions>
+    </mat-dialog-content>
+</div>
+
+<div class="container p-3" *ngIf="!doReport">
+    <h2 mat-dialog-title>Reports</h2>
+    <mat-dialog-content style="height: 15em; overflow: hidden; overflow-y: scroll;" class="reports-container">
+        <mat-stepper orientation="vertical">
+            <mat-step *ngFor="let report of reports; let i = index">
+            <ng-template matStepLabel>Report {{i + 1}}</ng-template>
+            <ng-template matStepContent>
+                <p class="my-3">{{report.description}}</p>
+                <button mat-button matStepperPrevious color="accent">Back</button>
+                <button mat-button matStepperNext color="primary">Next</button>
+            </ng-template>
+            </mat-step>
+        </mat-stepper>
+    </mat-dialog-content>
+</div>
+  
