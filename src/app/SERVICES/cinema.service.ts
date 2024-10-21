@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ApiClient } from "../API/apiClient.service";
+import { Reservation } from "../MODELS/cinema.model";
 
 @Injectable()
 export class MovieService {
@@ -17,8 +18,8 @@ export class MovieService {
         this.api.getMovie(this.BASE_URL + '/movies/', id, _this)
     }
 
-    processFuntion(_this: any){
-        this.api.get(this.BASE_URL + '/room/processFunction?id=', 3, this)
+    processFuntion(id: number, _this: any){
+        this.api.processFunction(this.BASE_URL + '/room/processFunction?id=', id, _this)
     }
 
     getShowTime(id: number ,_this: any){
@@ -55,6 +56,9 @@ export class MovieService {
 
     // ---------- POST -------------------
 
+    doReservation(reservation: Reservation, _this: any){
+        this.api.post(this.BASE_URL + '/client/doReservation', '', reservation, _this)
+    }
     // ---------- PUT --------------------
 
     // ---------- DELETE -----------------

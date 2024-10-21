@@ -18,3 +18,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     display: none;
 }
   
+.mat-mdc-dialog-container .mdc-dialog__surface{
+    overflow: hidden !important;
+}

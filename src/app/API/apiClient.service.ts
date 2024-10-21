@@ -19,8 +19,14 @@ export class ApiClient {
     }
     post = (url: string, params: any, body: any, _this: any) => {
         this.http.post(url + params, body).subscribe({
-            next: () => {},
-            error: (e) => {},
+            next: (data: any) => {
+                if(data){
+                    _this.successHandlerPost(data)
+                }
+            },
+            error: (e) => {
+                _this.errorHandlerPost(e)
+            },
             complete: () => {}
         })
     }
@@ -62,6 +68,20 @@ export class ApiClient {
             complete: () => {}
         })
     }
+
+    processFunction = (url: string, params: any,  _this: any) => {
+        this.http.get(url + params).subscribe({
+            next: (data: any) => {
+                if(data){
+                    _this.successHandlerProcessFuntion(data)
+                }
+            },
+            error: (e) => {},
+            complete: () => {}
+        })
+    }
+
+    
 
 
 }
