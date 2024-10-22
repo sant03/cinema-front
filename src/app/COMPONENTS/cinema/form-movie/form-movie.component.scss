@@ -1,0 +1,38 @@
+
+.poster-container{
+    max-width: 20%;
+    max-height: 13em;
+    min-height: 13em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+
+}
+
+.chips-container{
+    height: 12em;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.chips-container::-webkit-scrollbar{
+    display: none;
+}
+
+.poster {
+    width: 30%;
+    background-color: white;
+}
+
+.movie-card{
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center;
+    background-color: transparent;
+    align-items: stretch;
+}
+
+textarea{
+    resize: none;
+}

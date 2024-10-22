@@ -1,0 +1,29 @@
+<div class="container">
+    <h2 class="text-white">Categorias</h2>
+    <div class="d-flex gap-2">
+        <mat-chip-listbox class="chips-container mat-mdc-chip-set-stacked col-3" aria-label="Cutest dog breeds">
+              <mat-chip-option [selected]="category == categorySelected" *ngFor="let category of categories;" (click)="selectCategory(category)">{{category.name}}</mat-chip-option>
+        </mat-chip-listbox>
+        <div class="container">
+            <p class="text-white ">Descripcion</p>
+            <textarea name="" id="" readonly rows="5" class="col-12 outlined bg-transparent text-white rounded p-2">{{categorySelected?.description}}
+            </textarea>
+        </div>
+    </div>
+    <hr>
+    <h2 class="text-white">New Category</h2>
+    <form action="" class="d-flex flex-column col-12 gap-2">
+        <mat-form-field appearance="outline">
+            <mat-label class="text-white">Name</mat-label>
+            <input matInput placeholder="Enter category name" class="text-white">
+            <mat-icon matSuffix>edit</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label class="text-white">Description</mat-label>
+            <textarea matInput placeholder="Enter a description" class="text-white"></textarea>
+            <mat-icon matSuffix>edit</mat-icon>
+        </mat-form-field>
+        <button class="btn btn-outline-warning px-3 align-self-end col-2">Guardar</button>
+    </form>
+
+</div>

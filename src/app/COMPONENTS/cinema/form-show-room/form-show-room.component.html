@@ -1,0 +1,41 @@
+<div class="container">
+    <h2 class="text-white">Show Rooms</h2>
+    <div class="d-flex gap-2">
+        <mat-chip-listbox class="chips-container mat-mdc-chip-set-stacked col-3" aria-label="Cutest dog breeds">
+              <mat-chip-option class="d-flex justify-content-between" [selected]="showRoom == showRoomSelected" *ngFor="let showRoom of showRooms;" (click)="selectShowRoom(showRoom)"><span class="fbold">{{showRoom.name}}</span> -------- <span>{{showRoom.seats + ' seats'}} </span></mat-chip-option>
+        </mat-chip-listbox>
+    </div>
+    <hr>
+    <h2 class="text-white">New Show Room</h2>
+    <div class="d-flex gap-2">
+        <form action="" class="d-flex flex-column col-6 gap-2">
+            <mat-form-field appearance="outline">
+                <mat-label class="text-white">Name</mat-label>
+                <input matInput placeholder="Enter category name" class="text-white">
+                <mat-icon matSuffix>edit</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label class="text-white">Seats</mat-label>
+                <input matInput type="number" placeholder="Enter a description" class="text-white" [min]="1" max="30" name="seats" [(ngModel)]="aforo" (change)="processSeats([], aforo)">
+                <mat-icon matSuffix>edit</mat-icon>
+            </mat-form-field>
+            <button class="btn btn-outline-warning px-3 align-self-end col-2">Guardar</button>
+        </form>
+        <div class="d-flex flex-column col-6 gap-2">
+            <div class="seats-container">
+                <div class="row d-flex flex-column gap-3" *ngFor="let row of this.rows">
+                    <strong class="text-white text-center" style="font-size: .5em;">{{row.name}}</strong>
+                    <span class="seat rounded border text-white" style="font-size: .5em; cursor: pointer;"
+                    *ngFor="let seat of row.rowSeats" 
+                    (click)="setSeat(seat)"
+                    [ngClass]="{'border-warning': !seat.isReserved && seat.isAvailable, 'border-danger text-bg-danger': !seat.isAvailable}"
+                    >
+                        {{seat.name}}
+                    </span>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

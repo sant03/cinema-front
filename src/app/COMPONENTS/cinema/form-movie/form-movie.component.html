@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="d-flex gap-2">
+        <div class="d-flex flex-column gap-2 col-2">
+            <h2 class="text-white">Categorias</h2>
+            <div class="d-flex gap-2">
+                <mat-chip-listbox class="chips-container mat-mdc-chip-set-stacked" aria-label="Cutest dog breeds">
+                      <mat-chip-option [selected]="category == categorySelected" *ngFor="let category of categories;" (click)="selectCategory(category)">{{category.name}}</mat-chip-option>
+                </mat-chip-listbox>
+            </div>
+        </div>
+        <div class="d-flex flex-column gap-2 col-2">
+            <h2 class="text-white">Films</h2>
+            <div class="d-flex gap-2">
+                <mat-chip-listbox class="chips-container mat-mdc-chip-set-stacked" aria-label="Cutest dog breeds">
+                      <mat-chip-option [selected]="film == filmSelected" *ngFor="let film of films;" (click)="selectFilm(film)">{{film.title}}</mat-chip-option>
+                </mat-chip-listbox>
+            </div>
+        </div>
+        <div class="col-6">
+            <mat-card class="movie-card d-flex">
+                <div class="poster-container rounded">
+                    <img mat-card-image src="../../../assets/icons/video.png" alt="Photo of a Shiba Inu" class="poster">
+                </div>
+                <mat-card-content class="movie-detils">
+                  <h3 class="text-warning">
+                    {{filmSelected?.title}}
+                  </h3>
+                  <p class="text-white">{{filmSelected?.description}}</p>
+                    <div class="movie-extra">
+                        <span class="badge text-bg-warning">{{filmSelected?.category?.name}}</span>
+                    </div>
+                </mat-card-content>
+            </mat-card> 
+        </div>
+    </div>
+    <hr class="text-white">
+    <h2 class="text-white">New Movie</h2>
+    <form action="" class="d-flex flex-column col-12 gap-2">
+        <div class="d-flex gap-2 col-12 justify-content-between align-items-center">
+            <mat-form-field appearance="outline" class="col-3">
+                <mat-label class="text-white">Title</mat-label>
+                <input matInput placeholder="Enter category name" class="text-white">
+                <mat-icon matSuffix>edit</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="col-3">
+                <mat-label class="text-white">Poster</mat-label>
+                <input matInput placeholder="Enter a description" class="text-white">
+                <mat-icon matSuffix>photo</mat-icon>
+            </mat-form-field>
+            <button class="btn btn-outline-warning align-self-start px-3 col-2">Guardar</button>
+        </div>
+        <mat-form-field appearance="outline">
+            <mat-label class="text-white">Description</mat-label>
+            <textarea matInput placeholder="Enter a description" class="text-white"></textarea>
+            <mat-icon matSuffix>edit</mat-icon>
+        </mat-form-field>
+        <p class="text-info m-0">Select Category</p>
+        <mat-chip-set aria-label="Category selection" class="my-3">
+            <mat-chip *ngFor="let category of categories" class="border rounded" (click)="selectCategory(category)" [ngClass]="{'bg-warning' : category == categorySelected, 'border-warning': category == categorySelected, 'bg-transparent' : category != categorySelected, 'border-white': category !=  categorySelected}"><span class="text-white" >{{category.name}}</span></mat-chip>
+        </mat-chip-set>
+    </form>
+
+</div>

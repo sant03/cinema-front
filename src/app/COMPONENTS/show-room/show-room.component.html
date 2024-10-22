@@ -18,7 +18,7 @@
                     <strong class="text-white text-center">{{row.name}}</strong>
                     <button class="seat btn" 
                     *ngFor="let seat of row.rowSeats" 
-                    [ngClass]="{'btn-warning': seat.isReserved && !seat.isReported, 'btn-outline-warning': !seat.isReserved, 'btn-secondary': seat.isReserved && seat.isReported}"
+                    [ngClass]="{'btn-warning': seat.isReserved && !seat.isReported && seat.isAvailable, 'btn-outline-warning': !seat.isReserved && seat.isAvailable, 'btn-secondary': seat.isReserved && seat.isReported && seat.isAvailable, 'btn-danger': !seat.isAvailable}"
                     (click)="reserveSeat(seat)"
                     >
                         {{seat.name}}

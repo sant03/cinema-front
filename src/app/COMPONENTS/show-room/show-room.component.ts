@@ -19,6 +19,7 @@ export class ShowRoomComponent {
   funtionRoom: any = new FunctionRoom();
   reservations: Array<any> = new Array<any>();
   utlis = new Utils()
+  unavailableSeats: Array<any> = new Array<any>();
 
   constructor(private service: MovieService, private route: ActivatedRoute, private dialog: MatDialog){
     this.route.queryParams.subscribe(params => {
@@ -46,6 +47,12 @@ export class ShowRoomComponent {
     }
     if(seatsCompleted.length > 0){
       seatsCompleted.forEach((seat: any) => {
+        let isAvailable = this.unavailableSeats.find((useat: any) => {return useat.seat_id == seat.id})
+        if(isAvailable != null){
+          seat.isAvailable = false;
+        }else{
+          seat.isAvailable = true;
+        }
         let row = seatsProcessed.find((row: any) => {
           return row.name === seat.name.charAt(0)
         });
@@ -102,7 +109,7 @@ export class ShowRoomComponent {
 
   successHandlerProcessFuntion(data: any){
     this.funtionRoom = data
-    this.processSeats(this.funtionRoom.seats, this.funtionRoom.showRoom.seats)
+    this.service.getUnavailableSeats(this.funtionRoom.showRoom.id, this)
   }
 
   successHandlerGet(data: any){
@@ -127,8 +134,13 @@ export class ShowRoomComponent {
     })
   }
 
+  successHandlerGetSeats(data: any){
+    this.unavailableSeats = data;
+    console.log("Unavailable Seats: " + this.unavailableSeats)
+    this.processSeats(this.funtionRoom.seats, this.funtionRoom.showRoom.seats)
+  }
+
   successHandlerDelete(data: any){
-    console.log(data)
     let dataDialog = {
       title : 'Reservation canceled',
       content: 'Your reservation has been canceled successfully'
@@ -146,7 +158,6 @@ export class ShowRoomComponent {
   }
 
   errorHandlerPost(error: any){
-    console.log(error);
     let dataDialog = {
       title : 'Reservation failed',
       content: error.error
@@ -167,7 +178,6 @@ export class ShowRoomComponent {
     let reservationsProcessed = reservations.filter((reservation: any) => {
       return reservation.showTime.id == this.id
     })
-    console.log(reservationsProcessed)
     return reservationsProcessed
   }
 

@@ -1,7 +1,7 @@
     <div class="reservation p-3 d-flex gap-5">
         <div class="reservation-left">
             <h1 class="f-bold">Make your reservation</h1>
-            <div class="seat" [ngClass]="{'bg-warning': reservation.seat.isReserved && !reservation.seat.isReported, 'bg-transparent': !reservation.seat.isReserved, 'bg-secondary': reservation.seat.isReserved && reservation.seat.isReported}"
+            <div class="seat" [ngClass]="{'bg-warning': reservation.seat.isReserved && !reservation.seat.isReported && reservation.seat.isAvailable, 'bg-transparent': !reservation.seat.isReserved && reservation.seat.isAvailable, 'bg-secondary': reservation.seat.isReserved && reservation.seat.isReported && reservation.seat.isAvailable, 'bg-danger': !reservation.seat.isAvailable}"
             >
                 {{reservation.seat.name}}
             </div>
@@ -18,7 +18,7 @@
             <div class="d-flex justify-content-between gap-3">
                 <button class="btn btn-outline-secondary rounded-pill px-5" *ngIf="reservation.seat.isReserved && reservation.reserved" (click)="reportReservation()">Reportar</button>
                 <button class="btn btn-danger rounded-pill px-5" [mat-dialog-close]="true" (click)="cancelReservation()" *ngIf="reservation.seat.isReserved && reservation.reserved">Cancelar</button>
-                <button class="btn btn-outline-warning rounded-pill px-5" [mat-dialog-close]="true" (click)="doReservation()" *ngIf="!reservation.seat.isReserved && !reservation.reserved">Reservar</button>
+                <button class="btn btn-outline-warning rounded-pill px-5" [mat-dialog-close]="true" (click)="doReservation()" *ngIf="!reservation.seat.isReserved && !reservation.reserved && reservation.seat.isAvailable">Reservar</button>
             </div>
         </div>
     </div>

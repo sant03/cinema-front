@@ -54,6 +54,13 @@ export class MovieService {
         this.api.get(this.BASE_URL + '/users/', id, _this)
     }
 
+    getShowRooms(_this: any){
+        this.api.get(this.BASE_URL + '/cinema/showRooms', '', _this)
+    }
+
+    getUnavailableSeats(id: number, _this: any){
+        this.api.getSeats(this.BASE_URL + '/room/unavailableSeats/', id, _this)
+    }
     // ---------- POST -------------------
 
     doReservation(reservation: Reservation, _this: any){

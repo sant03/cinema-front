@@ -1,0 +1,14 @@
+
+.chips-container{
+    height: 12em;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.chips-container::-webkit-scrollbar{
+    display: none;
+}
+
+textarea{
+    resize: none;
+}

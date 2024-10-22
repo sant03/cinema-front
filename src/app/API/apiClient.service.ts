@@ -101,6 +101,20 @@ export class ApiClient {
         })
     }
 
+    getSeats = (url: string, params: any,  _this: any) => {
+        this.http.get(url + params).subscribe({
+            next: (data: any) => {
+                if(data){
+                    _this.successHandlerGetSeats(data)
+                }
+            },
+            error: (e) => {
+                _this.errorHandlerSeats(e)
+            },
+            complete: () => {}
+        })
+    }
+
     
 
 

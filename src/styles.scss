@@ -24,6 +24,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     overflow: hidden !important;
 }
 
+.mat-mdc-select-value-text{
+    color: white !important;
+}
+
+
 .warning{
     position: absolute;
     right: 2%;

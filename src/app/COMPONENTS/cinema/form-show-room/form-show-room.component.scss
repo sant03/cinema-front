@@ -1,0 +1,20 @@
+.chips-container{
+    height: 12em;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.chips-container::-webkit-scrollbar{
+    display: none;
+}
+
+
+.seats-container{
+    width: 90%;
+    background-color: black;
+    margin-left: 5em;
+    display: flex;
+    justify-content: center;
+    gap: 3em;
+    align-items: center;
+}

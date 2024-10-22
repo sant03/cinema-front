@@ -26,6 +26,13 @@ import { ClientComponent } from './COMPONENTS/client/client.component';
 import { ReservationsComponent } from './COMPONENTS/client/reservations/reservations.component';
 import {MatChipsModule} from '@angular/material/chips';
 import { CinemaComponent } from './COMPONENTS/cinema/cinema.component';
+import { FormCategoryComponent } from './COMPONENTS/cinema/form-category/form-category.component';
+import { FormMovieComponent } from './COMPONENTS/cinema/form-movie/form-movie.component';
+import { FormShowTimeComponent } from './COMPONENTS/cinema/form-show-time/form-show-time.component';
+import { FormShowRoomComponent } from './COMPONENTS/cinema/form-show-room/form-show-room.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatSelectModule} from '@angular/material/select';
+
 
 
 
@@ -42,7 +49,11 @@ import { CinemaComponent } from './COMPONENTS/cinema/cinema.component';
     ReportComponent,
     ClientComponent,
     ReservationsComponent,
-    CinemaComponent
+    CinemaComponent,
+    FormCategoryComponent,
+    FormMovieComponent,
+    FormShowTimeComponent,
+    FormShowRoomComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +69,9 @@ import { CinemaComponent } from './COMPONENTS/cinema/cinema.component';
     ReactiveFormsModule,
     MatButtonModule,
     MatStepperModule,
-    MatChipsModule
+    MatChipsModule,
+    MatMenuModule,
+    MatSelectModule
     
   ],
   providers: [ApiClient, MovieService],

@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="d-flex gap-2 col-12">
+        <div class="d-flex flex-column gap-2 col-3">
+            <h2 class="text-white">Categorias</h2>
+            <div class="d-flex gap-2">
+                <mat-chip-listbox class="chips-container mat-mdc-chip-set-stacked" aria-label="Cutest dog breeds">
+                      <mat-chip-option [selected]="category == categorySelected" *ngFor="let category of categories;" (click)="selectCategory(category)">{{category.name}}</mat-chip-option>
+                </mat-chip-listbox>
+            </div>
+        </div>
+        <div class="d-flex flex-column gap-2 col-3">
+            <h2 class="text-white">Films</h2>
+            <div class="d-flex gap-2">
+                <mat-chip-listbox class="chips-container mat-mdc-chip-set-stacked" aria-label="Cutest dog breeds">
+                      <mat-chip-option [selected]="film == filmSelected" *ngFor="let film of films;" (click)="selectFilm(film)">{{film.title}}</mat-chip-option>
+                </mat-chip-listbox>
+            </div>
+        </div>
+        <div class="d-flex flex-column gap-2 col-3">
+            <h2 class="text-white">Shows times</h2>
+            <div class="d-flex gap-2">
+                <mat-chip-listbox class="chips-container mat-mdc-chip-set-stacked" aria-label="Cutest dog breeds">
+                      <mat-chip-option [selected]="showTime == showTimeSelected" *ngFor="let showTime of showTimes;" (click)="selectShowTime(showTime)">{{showTime.date}}</mat-chip-option>
+                </mat-chip-listbox>
+            </div>
+        </div>
+        <mat-card class="showTime">
+            <h3 class="badge text-white">{{utils.parseDate(showTimeSelected?.date) | date: 'dd/MM/yyyy'}}</h3>
+            <h3 class="badge bg-info text-dark">{{utils.parseDate(showTimeSelected?.date) | date: 'hh:mm a'}}</h3>
+        </mat-card>
+    </div>
+    <hr class="text-white">
+    <h2 class="text-white">New Show Time</h2>
+    <form action="" class="d-flex flex-column col-12 gap-2">
+        <div class="d-flex gap-2 col-12 justify-content-between align-items-center">
+            <mat-form-field appearance="outline" class="col-3">
+                <mat-label class="text-white">Date</mat-label>
+                <input matInput placeholder="Enter category name" type="date" class="text-white">
+                <mat-icon matSuffix>calendar</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="col-3">
+                <mat-label class="text-white">Select a category</mat-label>
+                <mat-select name="category" class="text-white" style="color: white !important; " [(ngModel)]="categoryName">
+                  <mat-option [value]="categoryName" *ngFor="let category of categories" (click)="selectCategory(category)">{{category.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="col-3">
+                <mat-label class="text-white">Select a film</mat-label>
+                <mat-select [(ngModel)]="filmSelected" name="movie" class="text-white">
+                  <mat-option [value]="movie" *ngFor="let movie of films">{{movie.title}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button class="btn btn-outline-warning align-self-start px-3 col-2">Guardar</button>
+        </div>
+        <mat-form-field appearance="outline">
+            <mat-label class="text-white">Description</mat-label>
+            <textarea matInput placeholder="Enter a description" class="text-white"></textarea>
+            <mat-icon matSuffix>edit</mat-icon>
+        </mat-form-field>
+    </form>
+
+</div>
